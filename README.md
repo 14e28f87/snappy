@@ -2,6 +2,7 @@ https://github.com/KnpLabs/snappy
 
 
 EN:
+
 I created generateFromHtml(), generateFromXml() and generateFromTxt() method.
 
 wkhtmltopdf is not a single kind of rendering program.
@@ -9,6 +10,7 @@ Local input files are rendered differently depending on the file extension.
 You can choose three rendering engines of txt html xml with generateFromHtml(), generateFromXml() and generateFromTxt().
 
 JA:
+
 generateFromHtml(), generateFromXml() and generateFromTxt() メソッドを追加しました。
 
 wkhtmltopdf は1つのレンダリング プログラムではありません。
