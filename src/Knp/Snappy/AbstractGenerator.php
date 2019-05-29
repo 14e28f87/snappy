@@ -197,19 +197,45 @@ abstract class AbstractGenerator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generateFromHtml($html, $output, array $options = [], $overwrite = false)
+    public function generateFromHtml($content, $output, array $options = [], $overwrite = false)
+    {
+        $this->generateFromContent('html', $content, $output, $options, $overwrite);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateFromXml($content, $output, array $options = [], $overwrite = false)
+    {
+        $this->generateFromContent('xml', $content, $output, $options, $overwrite);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateFromTxt($content, $output, array $options = [], $overwrite = false)
+    {
+        $this->generateFromContent('txt', $content, $output, $options, $overwrite);
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateFromContent($fileext, $content, $output, array $options = [], $overwrite = false)
     {
         $fileNames = [];
-        if (is_array($html)) {
-            foreach ($html as $htmlInput) {
-                $fileNames[] = $this->createTemporaryFile($htmlInput, 'html');
+        if (is_array($content)) {
+            foreach ($content as $contentInput) {
+                $fileNames[] = $this->createTemporaryFile($contentInput, $fileext);
             }
         } else {
-            $fileNames[] = $this->createTemporaryFile($html, 'html');
+            $fileNames[] = $this->createTemporaryFile($content, $fileext);
         }
 
         $this->generate($fileNames, $output, $options, $overwrite);
     }
+
 
     /**
      * {@inheritdoc}
